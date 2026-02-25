@@ -1,17 +1,20 @@
 <script setup>
-// Props para customizar o título
 defineProps({
   title: {
     type: String,
     default: 'Meu App',
   },
+  showBack: Boolean,
 });
+
+defineEmits(['back']);
 </script>
 
 <template>
   <header class="app-header">
+    <button v-if="showBack" @click="$emit('back')" class="btn-back">←</button>
     <h1>{{ title }}</h1>
-    <slot name="actions"></slot>
+    <div class="spacer"></div>
   </header>
 </template>
 
@@ -26,14 +29,28 @@ defineProps({
   color: white;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 0 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 100;
 }
 
+.btn-back {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 8px;
+}
+
 .app-header h1 {
   font-size: 18px;
   font-weight: 600;
+  flex: 1;
+}
+
+.spacer {
+  width: 40px; /* Espaço para balancear o botão de voltar */
 }
 </style>

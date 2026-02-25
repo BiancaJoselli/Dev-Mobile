@@ -1,21 +1,11 @@
 <script setup>
-import { ref } from 'vue';
-import AppInput from './components/AppInput.vue';
-
-const name = ref('');
-const email = ref('');
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <AppInput v-model="name" label="Nome" placeholder="Digite seu nome" />
-
-  <AppInput
-    v-model="email"
-    label="E-mail"
-    type="email"
-    placeholder="seu@email.com"
-  />
-
-  <p>Nome: {{ name }}</p>
-  <p>E-mail: {{ email }}</p>
+  <RouterView />
 </template>
+
+<style>
+@import './assets/css/global.css';
+</style>
