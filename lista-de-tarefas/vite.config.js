@@ -44,7 +44,7 @@ export default defineConfig({
             },
           },
           {
-            urlPattern: /^https:\/\/api\.exemplo\.com\/.*/i,
+            urlPattern: /^https:\/\/191.52.55.134:8001\/.*/i,
             handler: 'NetworkFirst',
             options: {
               cacheName: 'api-cache',
