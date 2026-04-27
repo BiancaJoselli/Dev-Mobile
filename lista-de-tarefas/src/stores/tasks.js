@@ -74,6 +74,23 @@ export const useTasksStore = defineStore('tasks', () => {
         }
     }
 
+    async function updateTask(id, { title, imgAttachmentKey } = {}) {
+        if (title !== undefined && !title.trim()) return;
+        error.value = null;
+            const payload = {};
+        if (title !== undefined) payload.title = title.trim();
+        if (imgAttachmentKey != null) payload.img_attachment_key = imgAttachmentKey;
+        try {
+            const response = await tasksApi.update(id, payload);
+            const index = tasks.value.findIndex((t) => t.id === id);
+        if (index !== -1) tasks.value[index] = response.data;
+    } catch (err) {
+        error.value = 'Erro ao editar tarefa.';
+        console.error(err);
+    }
+    }
+
+
     return {
         tasks,
         loading,
@@ -85,5 +102,6 @@ export const useTasksStore = defineStore('tasks', () => {
         toggleTask,
         removeTask,
         updateTaskTitle,
+        updateTask,
     };
 });
