@@ -50,6 +50,7 @@
 
 
 <script setup>
+import tasksApi from '@/api/tasksApi';
 import { ref, watch } from 'vue';
 
 const props = defineProps({
