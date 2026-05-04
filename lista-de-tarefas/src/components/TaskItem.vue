@@ -114,4 +114,13 @@ defineEmits(['toggle', 'remove', 'edit']);
   border: 1px solid #eee;
   flex-shrink: 0;
 }
+
+.task-thumbnail {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  flex-shrink: 0;
+}
 </style>

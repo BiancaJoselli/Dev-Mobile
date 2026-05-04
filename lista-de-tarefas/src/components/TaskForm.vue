@@ -48,7 +48,6 @@
   </form>
 </template>
 
-
 <script setup>
 import tasksApi from '@/api/tasksApi';
 import { ref, watch } from 'vue';
@@ -66,12 +65,11 @@ const previewUrl = ref(null)
 const imgAttachmentKey = ref(null)
 const uploading = ref(false)
 
+
 watch(
   () => props.editingTask,
   (task) => {
     newTask.value = task ? task.title : '';
-    previewUrl.value = null;
-    imgAttachmentKey.value = null;
   },
 );
 
@@ -80,11 +78,11 @@ function handleSubmit() {
   if (props.editingTask) {
     emit('update', props.editingTask.id, newTask.value.trim(), imgAttachmentKey.value,);
   } else {
-    emit('add', newTask.value.trim());
+    emit('add', newTask.value.trim(),
+    imgAttachmentKey.value,
+  );
   }
   newTask.value = '';
-  previewUrl.value = null;
-  imgAttachmentKey.value = null;
   emit('cancel');
 }
 
